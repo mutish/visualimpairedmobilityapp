@@ -1,8 +1,8 @@
 package com.example.repository
 
-import com.example.models.User
+import com.example.models.user.User
 import com.example.models.Users
-import com.example.models.toUser
+import com.example.models.user.toUser
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction

@@ -1,8 +1,9 @@
-package com.example.models
+package com.example.models.user
 
+import com.example.models.Users
 import org.jetbrains.exposed.sql.ResultRow
 fun ResultRow.toUser() = User(
-    UserID = this[Users.UsersID],
+    UsersID = this[Users.UsersID],
     Username = this[Users.Username],
     Email = this[Users.Email],
     TelNo = this[Users.Telno],
