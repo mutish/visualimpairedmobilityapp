@@ -37,9 +37,10 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.33")
     implementation("io.ktor:ktor-server-sse")
     implementation("io.ktor:ktor-server-netty")
+    implementation("org.slf4j:slf4j-simple:2.0.9")
     implementation("ch.qos.logback:logback-classic:1.2.11")
-    //implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-config-yaml")
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+
 }

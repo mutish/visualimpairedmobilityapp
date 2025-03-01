@@ -26,7 +26,7 @@ class AlertRepository {
     fun getNearbyAlerts(lat: Double, long: Double, radius:Double= 100.0): List<alert> = transaction{
         Alerts.selectAll()
             .map{it.toAlert()}
-            .filter{isWithinRadius(it.latitude, it.longitude,lat, long, radius)}
+            .filter{isWithinRadius(it.latitude.toDouble(), it.longitude.toDouble(),lat, long, radius)}
     }
     // Check if coordinates are within a given radius (Haversine formula can be used)
     fun isWithinRadius(lat1:Double, long1:Double, lat2:Double, long2:Double,radius:Double):Boolean{

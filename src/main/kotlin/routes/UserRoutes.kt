@@ -38,9 +38,9 @@ fun Application.userRoutes(){
                 profilePicture = user.Profile_picture
             )
             if (newUserID != null) {
-                call.respond("User created successfully with ID: $newUserID")
+                call.respond("User created successfully.")
             } else {
-                call.respond("User creation failed")
+                call.respond("Failed to create user")
             }
         }
 
