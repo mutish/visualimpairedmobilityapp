@@ -1,12 +1,16 @@
 package com.example
 
 import com.example.database.DatabaseFactory
-import com.example.repository.UserRepository
+import com.example.routes.sosRoutes
 import com.example.routes.userRoutes
+import com.google.auth.oauth2.GoogleCredentials
+import com.google.firebase.FirebaseApp
+import com.google.firebase.FirebaseOptions
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.routing.*
+import java.io.FileInputStream
 
 fun main(args: Array<String>) {
     io.ktor.server.netty.EngineMain.main(args)
@@ -15,14 +19,29 @@ fun main(args: Array<String>) {
 fun Application.module() {
 //    configureSerialization()
 //    configureRouting()
+    configureFirebase()
     //initialise database
     DatabaseFactory.init()
     install(ContentNegotiation) {
         json()
     }
+
     //Define routes
     routing {
         userRoutes()
+        sosRoutes()
+
     }
 
+}
+fun Application.configureFirebase(){
+    val serviceAccount = FileInputStream("visualimpairedmobilityapp-firebase-adminsdk-fbsvc-57a8094983.json") // Path to Firebase credentials
+
+    val options = FirebaseOptions.builder()
+        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+        .build()
+
+    if (FirebaseApp.getApps().isEmpty()) {
+        FirebaseApp.initializeApp(options)
+    }
 }

@@ -42,5 +42,7 @@ dependencies {
     implementation("io.ktor:ktor-server-config-yaml")
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    //auth
+    implementation("com.google.firebase:firebase-admin:9.2.0")
 
 }
