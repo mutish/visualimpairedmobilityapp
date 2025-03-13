@@ -23,13 +23,12 @@ class UserRepository {
     }
 
     // Insert a new user
-    fun newUser(username: String, email: String, telNo: String, password: String, profilePicture: String): Int? {
+    fun newUser(username: String, email: String, telNo: String, profilePicture: String): Int? {
         return transaction {
             Users.insert {
                 it[Username] = username
                 it[Email] = email
                 it[Telno] = telNo
-                it[Password_hash] = password
                 it[Profile_picture] = profilePicture
             } get Users.UsersID // Retrieve inserted UsersID
         }
@@ -40,7 +39,6 @@ class UserRepository {
             it[Username] = user.Username
             it[Email] =user.Email
             it[Telno] =user.TelNo
-            it[Password_hash] =user.Password_hash
             it[Profile_picture] =user.Profile_picture
             it[updated_at] =user.updatedAt
         } > 0

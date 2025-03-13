@@ -1,8 +1,7 @@
 package com.example
 
 import com.example.database.DatabaseFactory
-import com.example.routes.sosRoutes
-import com.example.routes.userRoutes
+import com.example.routes.*
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
@@ -30,12 +29,18 @@ fun Application.module() {
     routing {
         userRoutes()
         sosRoutes()
+        alertRoutes()
+        eRoutes()
+        navigationRoutes()
+        settingRoutes()
+
+
 
     }
 
 }
 fun Application.configureFirebase(){
-    val serviceAccount = FileInputStream("visualimpairedmobilityapp-firebase-adminsdk-fbsvc-57a8094983.json") // Path to Firebase credentials
+    val serviceAccount = FileInputStream("src/main/resources/visualimpairedmobilityapp-firebase-adminsdk-fbsvc-57a8094983.json") // Path to Firebase credentials
 
     val options = FirebaseOptions.builder()
         .setCredentials(GoogleCredentials.fromStream(serviceAccount))

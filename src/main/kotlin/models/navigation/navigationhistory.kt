@@ -1,9 +1,10 @@
 package com.example.models.navigation
 
 import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
 
-
+@Serializable
 data class navigation_history(
     val NavID: Int,
     val UsersID: Int? = null,

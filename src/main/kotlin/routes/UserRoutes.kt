@@ -34,7 +34,6 @@ fun Application.userRoutes(){
                 username = user.Username,
                 email = user.Email,
                 telNo = user.TelNo,
-                password = user.Password_hash,
                 profilePicture = user.Profile_picture
             )
             if (newUserID != null) {

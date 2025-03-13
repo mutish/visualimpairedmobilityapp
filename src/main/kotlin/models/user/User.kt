@@ -6,15 +6,14 @@ import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
 
 
-
+@Serializable
 data class User(
     val UsersID: Int,
     val Username: String,
     val Email: String,
     val TelNo: String,
-    val Password_hash: String,
     val Profile_picture: String,
-    val createdAt: LocalDateTime = LocalDateTime.now(),
-    val updatedAt: LocalDateTime = LocalDateTime.now()
+    @Contextual val createdAt: LocalDateTime = LocalDateTime.now(),
+    @Contextual val updatedAt: LocalDateTime = LocalDateTime.now()
 
     )
