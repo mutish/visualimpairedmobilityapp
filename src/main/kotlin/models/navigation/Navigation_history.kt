@@ -4,7 +4,8 @@ import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.javatime.CurrentTimestamp
 import org.jetbrains.exposed.sql.javatime.datetime
 
-object Navigation_history: Table() {
+object navigationHistory: Table(name = "navigation_history",
+) {
     val NavID = integer("NavID").autoIncrement()
     val UsersID = integer("UsersID").autoIncrement()
     val start_location = varchar("start_location", 40)

@@ -2,6 +2,7 @@ package com.example.routes
 
 import com.example.models.user.User
 import com.example.repository.UserRepository
+import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
@@ -41,6 +42,15 @@ fun Application.userRoutes(){
             } else {
                 call.respond("Failed to create user")
             }
+        }
+        get("/protected"){
+            val UserID =  call.verifyFirebaseToken()
+            if (UserID != null) {
+                call.respond(HttpStatusCode.Unauthorized,"Invalid")
+                return@get
+            }
+            call.respond(HttpStatusCode.OK,"Welcome, user ID:$UserID")
+
         }
 
         //update user

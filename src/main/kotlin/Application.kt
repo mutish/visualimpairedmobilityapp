@@ -33,14 +33,11 @@ fun Application.module() {
         eRoutes()
         navigationRoutes()
         settingRoutes()
-
-
-
     }
 
 }
 fun Application.configureFirebase(){
-    val serviceAccount = FileInputStream("src/main/resources/visualimpairedmobilityapp-firebase-adminsdk-fbsvc-57a8094983.json") // Path to Firebase credentials
+    val serviceAccount = FileInputStream("src/main/resources/serviceAccountkey.json") // Path to Firebase credentials
 
     val options = FirebaseOptions.builder()
         .setCredentials(GoogleCredentials.fromStream(serviceAccount))

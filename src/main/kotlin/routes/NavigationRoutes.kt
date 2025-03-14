@@ -13,7 +13,7 @@ fun Application.navigationRoutes(){
     routing {
         //all travel logs
         get("/navigation"){
-          //  call.respond(navRepository.getAllNavigationHistory())
+          call.respond(navRepository.getAllNavigationHistory())
         }
         //byID
         get("/navigation/{NavID}"){
