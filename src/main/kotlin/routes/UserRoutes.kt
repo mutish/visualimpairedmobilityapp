@@ -44,12 +44,12 @@ fun Application.userRoutes(){
             }
         }
         get("/protected"){
-            val UserID =  call.verifyFirebaseToken()
-            if (UserID != null) {
+            val username =  call.verifyFirebaseToken()
+            if (username != null) {
                 call.respond(HttpStatusCode.Unauthorized,"Invalid")
                 return@get
             }
-            call.respond(HttpStatusCode.OK,"Welcome, user ID:$UserID")
+            call.respond(HttpStatusCode.OK,"Welcome, $username")
 
         }
 
@@ -69,7 +69,7 @@ fun Application.userRoutes(){
         delete("/users/{UserID}") {
             val UserID = call.parameters["UserID"]?.toIntOrNull()
             if (UserID == null) {
-                call.respond("Invalid user ID")
+                call.respond(HttpStatusCode.Unauthorized,"Invalid user ID")
                 return@delete
             }
             val deleted = userRepository.deleteUser(UserID)

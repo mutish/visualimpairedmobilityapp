@@ -1,6 +1,7 @@
 package com.example.routes
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserRecord
 import io.ktor.server.application.*
 
 suspend fun ApplicationCall.verifyFirebaseToken(): String?{
@@ -10,7 +11,8 @@ suspend fun ApplicationCall.verifyFirebaseToken(): String?{
     val idToken = authHeader.removePrefix("Bearer ")
     return try{
         val decodeToken =FirebaseAuth.getInstance().verifyIdToken(idToken)
-        decodeToken.uid
+        val userRecord: UserRecord= FirebaseAuth.getInstance().getUser(decodeToken.uid)
+        userRecord.displayName ?: "Unknown User"
     }catch (e:Exception){
         null
     }
