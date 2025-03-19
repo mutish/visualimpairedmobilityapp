@@ -1,16 +1,15 @@
 package com.example.repository
 
-import com.example.models.user.User
 import com.example.models.Users
+import com.example.models.user.User
 import com.example.models.user.toUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.deleteWhere
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
-import kotlinx.coroutines.tasks.await
+import org.jetbrains.exposed.sql.update
 
 // Handles CRUD operations for Users
 class UserRepository {
