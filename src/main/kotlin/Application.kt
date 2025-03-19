@@ -5,6 +5,7 @@ import com.example.routes.*
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
+import com.google.firebase.database.FirebaseDatabase
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*
@@ -25,6 +26,7 @@ fun Application.module() {
         json()
     }
 
+
     //Define routes
     routing {
         userRoutes()
@@ -41,9 +43,12 @@ fun Application.configureFirebase(){
 
     val options = FirebaseOptions.builder()
         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+        .setDatabaseUrl("https://visuallyimpairedmobilityapp-default-rtdb.firebaseio.com/")
         .build()
 
     if (FirebaseApp.getApps().isEmpty()) {
         FirebaseApp.initializeApp(options)
     }
 }
+
+

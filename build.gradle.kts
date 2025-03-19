@@ -27,6 +27,7 @@ dependencies {
     implementation("io.ktor:ktor-server-core")
     implementation("io.ktor:ktor-server-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
     implementation("com.h2database:h2:$h2_version")
@@ -38,11 +39,12 @@ dependencies {
     implementation("io.ktor:ktor-server-sse")
     implementation("io.ktor:ktor-server-netty")
     implementation("org.slf4j:slf4j-simple:2.0.9")
-    implementation("ch.qos.logback:logback-classic:1.2.11")
+    implementation("ch.qos.logback:logback-classic:1.4.12")
     implementation("io.ktor:ktor-server-config-yaml")
+
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
-    //auth
+
     implementation("com.google.firebase:firebase-admin:9.2.0")
 
 }

@@ -6,10 +6,8 @@ fun ResultRow.toUser() = User(
     UsersID = this[Users.UsersID],
     Username = this[Users.Username],
     Email = this[Users.Email],
-    TelNo = this[Users.Telno],
-    Profile_picture = this[Users.Profile_picture],
-    createdAt = this[Users.created_at],
-    updatedAt = this[Users.updated_at]
+    FirebaseUUID = this[Users.FirebaseUUID],
+
 )
 
 

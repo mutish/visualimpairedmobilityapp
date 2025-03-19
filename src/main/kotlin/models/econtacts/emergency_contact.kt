@@ -1,6 +1,8 @@
 package com.example.models.econtacts
 
 import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Serializer
 import java.time.LocalDateTime
 
 data class emergency_contact (

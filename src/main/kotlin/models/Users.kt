@@ -10,11 +10,8 @@ object Users : Table("users") {
 
     val UsersID = integer("UsersID").autoIncrement()
     val Username = varchar("Username", 40)
-    val Email = varchar("Email", 25)
-    val Telno = varchar("Telno", 12)
-    val Profile_picture = varchar("Profile_picture", 255)
-    val created_at = datetime("created_at").defaultExpression(CurrentTimestamp())
-    val updated_at = datetime("updated_at").defaultExpression(CurrentTimestamp())
+    val Email = varchar("Email", 40)
+    val FirebaseUUID = varchar("FirebaseUUID", 255)
 
     override val primaryKey = PrimaryKey(UsersID)
 }

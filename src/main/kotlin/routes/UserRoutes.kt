@@ -28,14 +28,15 @@ fun Application.userRoutes(){
             if (user != null) call.respond(user) else call.respond("User not found")
         }
 
+
+
+
         //create user
         post("/users") {
             val user = call.receive<User>()
             val newUserID = userRepository.newUser(
                 username = user.Username,
-                email = user.Email,
-                telNo = user.TelNo,
-                profilePicture = user.Profile_picture
+                email = user.Email
             )
             if (newUserID != null) {
                 call.respond("User created successfully.")
@@ -43,16 +44,6 @@ fun Application.userRoutes(){
                 call.respond("Failed to create user")
             }
         }
-        get("/protected"){
-            val username =  call.verifyFirebaseToken()
-            if (username != null) {
-                call.respond(HttpStatusCode.Unauthorized,"Invalid")
-                return@get
-            }
-            call.respond(HttpStatusCode.OK,"Welcome, $username")
-
-        }
-
         //update user
         put("/users/{UserID}") {
             val UserID = call.parameters["UserID"]?.toIntOrNull()
