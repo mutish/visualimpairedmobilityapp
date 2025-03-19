@@ -7,11 +7,11 @@ import org.jetbrains.exposed.sql.javatime.datetime
 
 
 object Users : Table("users") {
-
     val UsersID = integer("UsersID").autoIncrement()
-    val Username = varchar("Username", 40)
-    val Email = varchar("Email", 40)
+    val Username = text("Username").uniqueIndex() // Ensuring it is non-null
+    val Email = text("Email")
     val FirebaseUUID = varchar("FirebaseUUID", 255)
+    val createdAt = datetime("created_at").defaultExpression(CurrentTimestamp())
 
     override val primaryKey = PrimaryKey(UsersID)
 }

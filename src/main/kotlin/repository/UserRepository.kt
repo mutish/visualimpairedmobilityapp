@@ -10,15 +10,15 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.update
+import java.time.LocalDateTime
 
 // Handles CRUD operations for Users
 class UserRepository {
-    private val database = FirebaseDatabase.getInstance().getReference("users")
-
     // Insert a new user
-    fun newUser(username: String, email: String): String? {
+    fun newUser(firebaseId: String, username: String, email: String,): String {
         return transaction {
             Users.insert {
+                it[FirebaseUUID] = firebaseId
                 it[Username] = username
                 it[Email] = email
 

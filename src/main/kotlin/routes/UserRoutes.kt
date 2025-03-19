@@ -35,6 +35,7 @@ fun Application.userRoutes(){
         post("/users") {
             val user = call.receive<User>()
             val newUserID = userRepository.newUser(
+                firebaseId = user.FirebaseUUID,
                 username = user.Username,
                 email = user.Email
             )
