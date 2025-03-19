@@ -12,7 +12,7 @@ object DatabaseFactory {
         val url = "jdbc:mysql://localhost:3306/tembeanami"
         val driver = "com.mysql.cj.jdbc.Driver"
         val user = "root"
-        val password = "MySQL@2024"
+        val password = "20700817Mkrs!"
 
         Database.connect(url, driver, user, password)
 
